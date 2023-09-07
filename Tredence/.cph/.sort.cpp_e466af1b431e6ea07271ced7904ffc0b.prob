@@ -1,0 +1,1 @@
+{"name":"Local: sort","url":"c:\\Users\\KIIT\\Desktop\\Companies\\Tredence\\sort.cpp","tests":[{"id":1688740349841,"input":"7\n5 2\n6 3\n9 1\n11 5\n12 3\n16 1\n20 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\KIIT\\Desktop\\Companies\\Tredence\\sort.cpp","group":"local","local":true}

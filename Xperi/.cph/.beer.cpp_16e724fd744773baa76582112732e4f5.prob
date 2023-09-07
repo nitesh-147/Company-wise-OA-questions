@@ -1,0 +1,1 @@
+{"name":"Local: beer","url":"c:\\Users\\KIIT\\Desktop\\Companies\\Xperi\\beer.cpp","tests":[{"id":1688538705227,"input":"5\n\n3 10 8 6 11\n\n4\n\n1\n\n10\n\n3\n\n11","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\KIIT\\Desktop\\Companies\\Xperi\\beer.cpp","group":"local","local":true}

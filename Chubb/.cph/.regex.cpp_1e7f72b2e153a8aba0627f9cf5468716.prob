@@ -1,0 +1,1 @@
+{"name":"Local: regex","url":"c:\\Users\\KIIT\\Desktop\\Companies\\Chubb\\regex.cpp","tests":[{"id":1689688535812,"input":"abhjhj_1234@hackerrank.com","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\KIIT\\Desktop\\Companies\\Chubb\\regex.cpp","group":"local","local":true}

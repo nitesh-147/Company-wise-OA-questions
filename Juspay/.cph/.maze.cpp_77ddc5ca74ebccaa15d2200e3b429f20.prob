@@ -1,0 +1,1 @@
+{"name":"Local: maze","url":"c:\\Users\\KIIT\\Desktop\\Companies\\Juspay\\maze.cpp","tests":[{"id":1692176581396,"input":"23 4 4 1 4 13 8 8 8 0 8 14 9 15 11 -1 10 15 22 22 22 22 22 21","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\KIIT\\Desktop\\Companies\\Juspay\\maze.cpp","group":"local","local":true}

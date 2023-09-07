@@ -1,0 +1,1 @@
+{"name":"Local: sum","url":"c:\\Users\\KIIT\\Desktop\\Companies\\Tredence\\sum.cpp","tests":[{"id":1688800083954,"input":"1\n5 \n1 2 3 4 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\KIIT\\Desktop\\Companies\\Tredence\\sum.cpp","group":"local","local":true}

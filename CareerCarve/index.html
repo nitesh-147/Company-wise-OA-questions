@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* CSS styles for the page */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .section {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section:hover {
+      background-color: #f5f5f5;
+    }
+
+    .drag-handle {
+      cursor: move;
+      padding: 3px 5px;
+      background-color: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .edit-button,
+    .description-button,
+    .save-button {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .edit-button:hover,
+    .description-button:hover,
+    .save-button:hover {
+      background-color: #45a049;
+    }
+
+    .description {
+      display: none;
+      margin-top: 5px;
+    }
+
+    .description-text {
+      font-style: italic;
+      color: #777;
+    }
+
+    .save-button[disabled] {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Builder</h1>
+    <div id="sections-container">
+      <div class="section" data-section="personal-info">
+        <span class="drag-handle">&#9776;</span>
+        <span class="section-name">Personal Information</span>
+        <div>
+          <button class="edit-button">Edit</button>
+          <button class="description-button">Description</button>
+        </div>
+        <div class="description">
+          <p class="description-text">This section contains personal information like name, contact details, etc.</p>
+        </div>
+      </div>
+      <div class="section" data-section="education">
+        <span class="drag-handle">&#9776;</span>
+        <span class="section-name">Education</span>
+        <div>
+          <button class="edit-button">Edit</button>
+          <button class="description-button">Description</button>
+        </div>
+        <div class="description">
+          <p class="description-text">This section highlights your educational background.</p>
+        </div>
+      </div>
+      <div class="section" data-section="experience">
+        <span class="drag-handle">&#9776;</span>
+        <span class="section-name">Experience</span>
+        <div>
+          <button class="edit-button">Edit</button>
+          <button class="description-button">Description</button>
+        </div>
+        <div class="description">
+          <p class="description-text">This section showcases your work experience.</p>
+        </div>
+      </div>
+      <div class="section" data-section="skills">
+        <span class="drag-handle">&#9776;</span>
+        <span class="section-name">Skills</span>
+        <div>
+          <button class="edit-button">Edit</button>
+          <button class="description-button">Description</button>
+        </div>
+        <div class="description">
+          <p class="description-text">This section highlights your skills and competencies.</p>
+        </div>
+      </div>
+      <div class="section" data-section="projects">
+        <span class="drag-handle">&#9776;</span>
+        <span class="section-name">Projects</span>
+        <div>
+          <button class="edit-button">Edit</button>
+          <button class="description-button">Description</button>
+        </div>
+        <div class="description">
+          <p class="description-text">This section showcases your personal or professional projects.</p>
+        </div>
+      </div>
+      <div class="section" data-section="certifications">
+        <span class="drag-handle">&#9776;</span>
+        <span class="section-name">Certifications</span>
+        <div>
+          <button class="edit-button">Edit</button>
+          <button class="description-button">Description</button>
+        </div>
+        <div class="description">
+          <p class="description-text">This section highlights your certifications and achievements.</p>
+        </div>
+      </div>
+    </div>
+    <button class="save-button" disabled>Save Changes</button>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // JavaScript code for the page
+    const sectionsContainer = document.getElementById('sections-container');
+    const sections = Array.from(sectionsContainer.getElementsByClassName('section'));
+    const saveButton = document.querySelector('.save-button');
+
+    // Enable drag and drop functionality
+    sections.forEach(section => {
+      section.draggable = true;
+
+      section.addEventListener('dragstart', (event) => {
+        event.dataTransfer.setData('text/plain', event.target.dataset.section);
+      });
+
+      section.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+      });
+
+      section.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const sourceSectionId = event.dataTransfer.getData('text/plain');
+        const sourceSection = sections.find(section => section.dataset.section === sourceSectionId);
+        const targetSection = event.currentTarget;
+
+        sectionsContainer.insertBefore(sourceSection, targetSection);
+        saveButton.disabled = false;
+      });
+    });
+
+    // Enable edit button functionality
+    const editButtons = Array.from(document.getElementsByClassName('edit-button'));
+    editButtons.forEach(editButton => {
+      editButton.addEventListener('click', (event) => {
+        const section = event.target.parentNode.parentNode;
+        const sectionName = section.querySelector('.section-name');
+        const newName = prompt('Enter a new name for the section:', sectionName.textContent);
+
+        if (newName) {
+          sectionName.textContent = newName;
+          saveButton.disabled = false;
+        }
+      });
+    });
+
+    // Enable description button functionality
+    const descriptionButtons = Array.from(document.getElementsByClassName('description-button'));
+    descriptionButtons.forEach(descriptionButton => {
+      descriptionButton.addEventListener('click', (event) => {
+        const section = event.target.parentNode.parentNode;
+        const description = section.querySelector('.description');
+        description.style.display = description.style.display === 'none' ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
